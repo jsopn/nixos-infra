@@ -35,7 +35,8 @@
 
   # sway fix
   environment.sessionVariables = {
-    WLR_DRM_DEVICES = "/dev/dri/card1";
     WLR_DRM_NO_MODIFIERS = "1";
   };
+
+  time.timeZone = "Asia/Tbilisi";
 }
