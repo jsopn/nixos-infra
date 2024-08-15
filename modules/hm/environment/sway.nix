@@ -33,10 +33,13 @@ in
       enable = true;
       events = [
         { event = "lock"; command = "swaylock"; }
+        { event = "before-sleep"; command = "swaylock"; }
+        { event = "after-resume"; command = ''swaymsg "output * dpms on"''; }
       ];
       timeouts = [
         { timeout = 290; command = "${pkgs.libnotify}/bin/notify-send -t 10000 -u critical -- 'Screen Lock' 'Screen lock in 10 seconds'"; }
         { timeout = 300; command = "swaylock"; }
+        { timeout = 360; command = ''swaymsg "output * dpms off"''; }
       ];
     };
   };
@@ -108,6 +111,8 @@ in
         "${modifier}+Shift+minus" = "move scratchpad";
         "${modifier}+minus" = "scratchpad show";
 
+        "${modifier}+l" = "swaylock";
+
         "${modifier}+Shift+c" = "reload";
         "${modifier}+Shift+e" =
           "exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'";
@@ -115,6 +120,7 @@ in
         "${modifier}+r" = "mode resize";
 
         "Print" = "exec grim -g \"$(slurp -d)\" - | wl-copy && ${playSoundScript}/bin/playNotificationSound";
+        "Ctrl+Print" = "exec grim - | wl-copy && ${playSoundScript}/bin/playNotificationSound";
 
         "XF86MonBrightnessDown" = "exec light -U 10";
         "XF86MonBrightnessUp" = "exec light -A 10";
