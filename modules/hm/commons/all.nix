@@ -44,10 +44,10 @@
       scrcpy
 
       dua
+      prismlauncher
     ];
   };
 
-  services.flameshot.enable = true;
   programs = {
     mpv.enable = true;
     obs-studio.enable = true;
