@@ -7,7 +7,6 @@
     nixosModules.hardware.ssd
     nixosModules.hardware.video
     nixosModules.hardware.bluetooth
-    nixosModules.hardware.opentabletdriver
 
     nixosModules.networking.avahiDiscovery
 
