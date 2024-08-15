@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ lib, pkgs, ... }:
 {
   programs = {
     dconf.enable = true;
@@ -7,8 +7,11 @@
 
   powerManagement = {
     enable = true;
-    powertop.enable = true;
   };
+
+  environment.systemPackages = with pkgs; [
+    powertop
+  ];
 
   services = {
     thermald.enable = true;
@@ -26,7 +29,7 @@
     };
 
     tlp = {
-      enable = lib.mkDefault true;
+      enable = true;
       settings = {
         CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
         CPU_SCALING_GOVERNOR_ON_AC = "performance";
@@ -39,6 +42,17 @@
 
         CPU_HWP_DYN_BOOST_ON_AC = 1;
         CPU_HWP_DYN_BOOST_ON_BAT = 0;
+
+        PCIE_ASPM_ON_AC = "default";
+        PCIE_ASPM_ON_BAT = "powersave";
+
+        INTEL_GPU_MAX_FREQ_ON_BAT = "950";
+
+        CPU_MIN_PERF_ON_AC = 0;
+        CPU_MAX_PERF_ON_AC = 100;
+        CPU_MIN_PERF_ON_BAT = 0;
+        CPU_MAX_PERF_ON_BAT = 30;
+
         USB_AUTOSUSPEND = 0;
 
         #Optional helps save long term battery health
