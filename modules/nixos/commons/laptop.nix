@@ -39,6 +39,7 @@
 
         CPU_HWP_DYN_BOOST_ON_AC = 1;
         CPU_HWP_DYN_BOOST_ON_BAT = 0;
+        USB_AUTOSUSPEND = 0;
 
         #Optional helps save long term battery health
         START_CHARGE_THRESH_BAT1 = 40; # 40 and bellow it starts to charge

@@ -13,7 +13,7 @@
 
     kernelModules = [ "kvm-intel" "acpi_call" ];
     kernel.sysctl."vm.swappiness" = 10;
-    kernelParams = [ "intel_pstate=active" ];
+    kernelParams = [ "intel_pstate=active" "usbcore.autosuspend=-1" ];
 
     initrd.luks.devices."encrypted-pv".device = "/dev/disk/by-uuid/8bc93602-968b-4b15-8f91-6d2505bc9238";
   };
