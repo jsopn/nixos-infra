@@ -18,7 +18,8 @@
     in
     {
       nixosConfigurations = (
-        mkLib.mkNixOSMachine { hostname = "laptop"; username = "k"; isLaptop = true; }
+        mkLib.mkNixOSMachine { hostname = "laptop"; username = "k"; isLaptop = true; } //
+        mkLib.mkNixOSMachine { hostname = "alpha"; username = "jsopn"; isServer = true; }
       );
 
       overlays = import ./overlays { inherit inputs; };
