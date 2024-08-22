@@ -22,6 +22,7 @@
     bluetooth = import ./hardware/bluetooth.nix;
     yubikey = import ./hardware/yubikey.nix;
     opentabletdriver = import ./hardware/opentabletdriver.nix;
+    flipperzero = import ./hardware/flipperzero.nix;
   };
 
   networking = {
