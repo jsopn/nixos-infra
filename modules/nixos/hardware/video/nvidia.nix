@@ -10,7 +10,7 @@ in
     };
 
     enableOffload = lib.mkOption {
-      default = true;
+      default = false;
     };
 
     intelBusId = lib.mkOption {

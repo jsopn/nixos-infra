@@ -1,23 +1,25 @@
 { nixosModules, ... }:
 {
-  imports = [
-    nixosModules.system.audio.pipewire
-    nixosModules.system.boot.plymouth
+  imports = with nixosModules; [
+    system.audio.pipewire
+    system.boot.plymouth
 
-    nixosModules.hardware.ssd
-    nixosModules.hardware.video
-    nixosModules.hardware.bluetooth
+    hardware.ssd
+    hardware.video
+    hardware.bluetooth
+    hardware.flipperzero
 
-    nixosModules.networking.avahiDiscovery
+    networking.avahiDiscovery
 
-    nixosModules.games.steam
+    games.steam
 
-    nixosModules.services.files.syncthing
+    services.files.syncthing
 
-    nixosModules.environment.sway
+    environment.sway
 
-    nixosModules.virtualisation.docker
-
+    virtualisation.docker
+    virtualisation.libvirt
+  ] ++ [
     ./stylix.nix
   ];
 
@@ -27,6 +29,8 @@
 
       nvidia = {
         enable = true;
+
+        enableOffload = true;
         intelBusId = "PCI:0:2:0";
         nvidiaBusId = "PCI:1:0:0";
       };
@@ -35,7 +39,7 @@
 
   # sway fix
   environment.sessionVariables = {
-    WLR_DRM_NO_MODIFIERS = "1";
+    WLR_NO_HARDWARE_CURSORS = "1";
   };
 
   time.timeZone = "Asia/Tbilisi";

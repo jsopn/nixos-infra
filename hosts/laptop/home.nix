@@ -1,8 +1,8 @@
 { config, pkgs, homeManagerModules, ... }:
 {
-  imports = [
-    homeManagerModules.apps.firefox
-    homeManagerModules.environment.sway
+  imports = with homeManagerModules; [
+    apps.firefox
+    environment.sway
   ];
 
   wayland.windowManager.sway.config = {
