@@ -4,7 +4,7 @@ let
     extraGroups = [ "wheel" "video" "docker" ];
 
     openssh.authorizedKeys.keys = [
-      (lib.readFile ./sshKeys/jsopnMaster.pub)
+      (lib.readFile ./keys/jsopn-master-ed25519.pub)
     ];
   };
 
