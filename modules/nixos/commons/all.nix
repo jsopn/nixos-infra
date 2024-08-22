@@ -2,6 +2,8 @@
 {
   imports = [
     ../system/users
+
+    inputs.agenix.nixosModules.default
   ];
 
   environment.systemPackages = (with pkgs; [
