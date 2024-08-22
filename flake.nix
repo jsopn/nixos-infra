@@ -14,6 +14,7 @@
       inherit (self) outputs;
 
       mkLib = import ./lib/flakeMkLib.nix { inherit inputs outputs; };
+      modules = import ./modules/default.nix { inherit inputs; };
     in
     {
       nixosConfigurations = (
@@ -21,7 +22,8 @@
       );
 
       overlays = import ./overlays { inherit inputs; };
-      nixosModules = import ./modules/nixos;
-      homeManagerModules = import ./modules/hm;
+      
+      nixosModules = modules.nixos;
+      homeManagerModules = modules.hm;
     };
 }

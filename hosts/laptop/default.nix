@@ -5,7 +5,8 @@
     system.boot.plymouth
 
     hardware.ssd
-    hardware.video
+    hardware.video.nvidia
+    hardware.video.intel
     hardware.bluetooth
     hardware.flipperzero
 
