@@ -1,15 +1,4 @@
 { pkgs, ... }:
-let
-  notificationSound = builtins.path {
-    path = ../../../lib/assets/sounds/notification-sound.wav;
-    name = "notification-sound";
-  };
-
-  playSoundScript = pkgs.writeShellScriptBin "playNotificationSound" ''
-    ${pkgs.alsa-utils}/bin/aplay "${notificationSound}"
-  '';
-
-in
 {
   home.packages = with pkgs; [
     grim
@@ -119,8 +108,8 @@ in
 
         "${modifier}+r" = "mode resize";
 
-        "Print" = "exec grim -g \"$(slurp -d)\" - | wl-copy && ${playSoundScript}/bin/playNotificationSound";
-        "Ctrl+Print" = "exec grim - | wl-copy && ${playSoundScript}/bin/playNotificationSound";
+        "Print" = "exec grim -g \"$(slurp -d)\" - | wl-copy";
+        "Ctrl+Print" = "exec grim - | wl-copy";
 
         "XF86MonBrightnessDown" = "exec light -U 10";
         "XF86MonBrightnessUp" = "exec light -A 10";
