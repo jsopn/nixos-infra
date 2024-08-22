@@ -45,5 +45,6 @@
 
   virtualisation = {
     docker = import ./virtualisation/docker.nix;
+    libvirt = import ./virtualisation/libvirt.nix;
   };
 }
