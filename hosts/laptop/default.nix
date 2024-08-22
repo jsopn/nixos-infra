@@ -37,10 +37,5 @@
     };
   };
 
-  # sway fix
-  environment.sessionVariables = {
-    WLR_NO_HARDWARE_CURSORS = "1";
-  };
-
   time.timeZone = "Asia/Tbilisi";
 }
